@@ -33,7 +33,6 @@ public final class Uri {
         if (!isValid(chunks)) {
             throw new RuntimeException("Invalid URL: [doesn't much to template]");
         }
-
         var scheme = stream(Scheme.values())
                 .filter(s -> chunks.get(0).equalsIgnoreCase(s.name()))
                 .findFirst()
@@ -49,7 +48,6 @@ public final class Uri {
                 .path(path)
                 .build();
     }
-
     private static boolean isValid(List<String> list) {
         return switch (list.size()) {
             case 0, 1 -> false;

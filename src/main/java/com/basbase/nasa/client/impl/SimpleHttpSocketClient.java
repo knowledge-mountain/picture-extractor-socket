@@ -43,7 +43,8 @@ public class SimpleHttpSocketClient implements HttpClient {
                     if (!HttpStatus.OK.code().equalsIgnoreCase(status)) {
                         System.exit(1);
                     }
-                    var builder = ResponseWrapper.builder().headers(extractHeaders(reader));
+                    var builder = ResponseWrapper.builder()
+                            .headers(extractHeaders(reader));
                     if (bodyExtractor != null) {
                         builder.body(bodyExtractor.apply(reader));
                     }
