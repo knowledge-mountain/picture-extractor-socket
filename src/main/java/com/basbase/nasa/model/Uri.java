@@ -6,12 +6,9 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import static java.lang.String.format;
-import static java.lang.String.join;
 import static java.util.Arrays.stream;
 import static java.util.stream.Stream.of;
 
