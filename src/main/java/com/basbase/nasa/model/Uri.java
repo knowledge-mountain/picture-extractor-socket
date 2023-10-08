@@ -19,7 +19,6 @@ import static java.util.stream.Stream.of;
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
 public final class Uri {
-
     private final Scheme scheme;
     private final String host;
     private final int port;
@@ -29,14 +28,11 @@ public final class Uri {
         if (url == null || url.isEmpty()) {
             throw new NullPointerException("Url is blank");
         }
-//        var regex = "(.*?)://(.*?)(/.*)";
-        var regex = "(.*?)://(.*)";
-        var chunks = Pattern.compile(regex)
+        var chunks = Pattern.compile("(.*?)://(.*)")
                 .matcher(url)
                 .results()
                 .flatMap(mr -> of(mr.group(1), mr.group(2)))
                 .toList();
-
         if (!isValid(chunks)) {
             throw new RuntimeException("Invalid URL: [doesn't much to template]");
         }
@@ -49,7 +45,6 @@ public final class Uri {
         var path = stream(chunks.get(1).split("/"))
                 .skip(1)
                 .collect(Collectors.joining("/", "/", ""));
-
         return Uri.builder()
                 .scheme(scheme)
                 .host(host)
